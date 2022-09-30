@@ -69,11 +69,12 @@ class ModelViewerState extends State<ModelViewer> {
         },
         onWebViewCreated: (final WebViewController webViewController) async {
           _controller.complete(webViewController);
-          print('>>>> ModelViewer initializing... <$_proxyURL>'); // DEBUG
+          debugPrint('>>>> ModelViewer initializing... <$_proxyURL>'); // DEBUG
           await webViewController.loadUrl(_proxyURL);
         },
         navigationDelegate: (final NavigationRequest navigation) async {
-          print('>>>> ModelViewer wants to load: <${navigation.url}>'); // DEBUG
+          debugPrint(
+              '>>>> ModelViewer wants to load: <${navigation.url}>'); // DEBUG
           if (!Platform.isAndroid) {
             if (Platform.isIOS && navigation.url == widget.iosSrc) {
               await launch(
@@ -133,21 +134,21 @@ class ModelViewerState extends State<ModelViewer> {
               },
             );
             await intent.launch().onError((error, stackTrace) {
-              print('>>>> ModelViewer Intent Error: $error'); // DEBUG
+              debugPrint('>>>> ModelViewer Intent Error: $error'); // DEBUG
             });
           } catch (error) {
-            print('>>>> ModelViewer failed to launch AR: $error'); // DEBUG
+            debugPrint('>>>> ModelViewer failed to launch AR: $error'); // DEBUG
           }
           return NavigationDecision.prevent;
         },
         onPageStarted: (final String url) {
-          //print('>>>> ModelViewer began loading: <$url>'); // DEBUG
+          //debugPrint('>>>> ModelViewer began loading: <$url>'); // DEBUG
         },
         onPageFinished: (final String url) {
-          //print('>>>> ModelViewer finished loading: <$url>'); // DEBUG
+          //debugPrint('>>>> ModelViewer finished loading: <$url>'); // DEBUG
         },
         onWebResourceError: (final WebResourceError error) {
-          print(
+          debugPrint(
               '>>>> ModelViewer failed to load: ${error.description} (${error.errorType} ${error.errorCode})'); // DEBUG
         },
       );
@@ -236,8 +237,8 @@ class ModelViewerState extends State<ModelViewer> {
     });
 
     _proxy!.listen((final HttpRequest request) async {
-      //print("${request.method} ${request.uri}"); // DEBUG
-      //print(request.headers); // DEBUG
+      //debugPrint("${request.method} ${request.uri}"); // DEBUG
+      //debugPrint(request.headers); // DEBUG
       final response = request.response;
 
       switch (request.uri.path) {
