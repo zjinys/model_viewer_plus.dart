@@ -15,7 +15,6 @@ abstract class HTMLBuilder {
     required final String src,
     final String? alt,
     final String? poster,
-    final bool? seamlessPoster,
     final Loading? loading,
     final Reveal? reveal,
     final bool? withCredentials,
@@ -28,14 +27,14 @@ abstract class HTMLBuilder {
     final bool? xrEnvironment,
     // Staging & Cameras Attributes
     final bool? cameraControls,
-    final bool? enablePan,
+    final bool? disablePan,
+    final bool? disableTap,
     final TouchAction? touchAction,
     final bool? disableZoom,
     final int? orbitSensitivity,
     final bool? autoRotate,
     final int? autoRotateDelay,
     final String? rotationPerSecond,
-    final InteractionPolicy? interactionPolicy,
     final InteractionPrompt? interactionPrompt,
     final InteractionPromptStyle? interactionPromptStyle,
     final num? interactionPromptThreshold,
@@ -46,7 +45,6 @@ abstract class HTMLBuilder {
     final String? minCameraOrbit,
     final String? maxFieldOfView,
     final String? minFieldOfView,
-    final Bounds? bounds,
     final num? interpolationDecay,
     // Lighting & Env Attributes
     final String? skyboxImage,
@@ -65,8 +63,7 @@ abstract class HTMLBuilder {
 
     // CSS Styles
     final Color backgroundColor = Colors.transparent,
-    // Loading CSS
-    final Color? posterColor,
+
     // Annotations CSS
     final num? minHotspotOpacity,
     final num? maxHotspotOpacity,
@@ -96,10 +93,6 @@ abstract class HTMLBuilder {
     // poster
     if (poster != null) {
       modelViewerHtml.write(' poster="${htmlEscape.convert(poster)}"');
-    }
-    // seamless-poster
-    if (seamlessPoster ?? false) {
-      modelViewerHtml.write(' seamless-poster');
     }
     // loading
     if (loading != null) {
@@ -180,9 +173,13 @@ abstract class HTMLBuilder {
     if (cameraControls ?? false) {
       modelViewerHtml.write(' camera-controls');
     }
-    // enable-pan
-    if (enablePan ?? false) {
-      modelViewerHtml.write(' enable-pan');
+    // disable-pan
+    if (disablePan ?? false) {
+      modelViewerHtml.write(' disable-pan');
+    }
+    // disable-tap
+    if (disableTap ?? false) {
+      modelViewerHtml.write(' disable-tap');
     }
     // touch-action
     if (touchAction != null) {
@@ -218,17 +215,6 @@ abstract class HTMLBuilder {
     if (rotationPerSecond != null) {
       modelViewerHtml.write(
           ' rotation-per-second="${htmlEscape.convert(rotationPerSecond)}"');
-    }
-    // interaction-policy
-    if (interactionPolicy != null) {
-      switch (interactionPolicy) {
-        case InteractionPolicy.allowWhenFocused:
-          modelViewerHtml.write(' interaction-policy="allow-when-focused"');
-          break;
-        case InteractionPolicy.alwaysAllow:
-          modelViewerHtml.write(' interaction-policy="always-allow"');
-          break;
-      }
     }
     // interaction-prompt
     if (interactionPrompt != null) {
@@ -297,17 +283,6 @@ abstract class HTMLBuilder {
     if (minFieldOfView != null) {
       modelViewerHtml
           .write(' min-field-of-view="${htmlEscape.convert(minFieldOfView)}"');
-    }
-    // bounds
-    if (bounds != null) {
-      switch (bounds) {
-        case Bounds.tight:
-          modelViewerHtml.write(' bounds="tight"');
-          break;
-        case Bounds.legacy:
-          modelViewerHtml.write(' bounds="legacy"');
-          break;
-      }
     }
     // interpolation-decay
     if (interpolationDecay != null) {
@@ -390,12 +365,6 @@ abstract class HTMLBuilder {
     // CSS Styles
     modelViewerHtml.write(
         'background-color: rgba(${backgroundColor.red}, ${backgroundColor.green}, ${backgroundColor.blue}, ${backgroundColor.alpha}); ');
-    // Loading CSS
-    // --poster-color
-    if (posterColor != null) {
-      modelViewerHtml.write(
-          'poster-color: rgba(${posterColor.red}, ${posterColor.green}, ${posterColor.blue}, ${posterColor.alpha}); ');
-    }
 
     // Annotations CSS
     // --min-hotspot-opacity

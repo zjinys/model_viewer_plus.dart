@@ -61,7 +61,6 @@ class ModelViewerState extends State<ModelViewer> {
             'src',
             'alt',
             'poster',
-            'seamless-poster',
             'loading',
             'reveal',
             'with-credentials',
@@ -76,14 +75,14 @@ class ModelViewerState extends State<ModelViewer> {
 
             // Staing & Cameras Attributes
             'camera-controls',
-            'enable-pan',
+            'disable-pan',
+            'disable-tap',
             'touch-action',
             'disable-zoom',
             'orbit-sensitivity',
             'auto-rotate',
             'auto-rotate-delay',
             'rotation-per-second',
-            'interaction-policy',
             'interaction-prompt',
             'interaction-prompt-style',
             'interaction-prompt-threshold',
@@ -94,7 +93,6 @@ class ModelViewerState extends State<ModelViewer> {
             'min-camera-orbit',
             'max-field-of-view',
             'min-field-of-view',
-            'bounds',
             'interpolation-decay',
 
             // Lighting & Env Attributes
@@ -109,7 +107,7 @@ class ModelViewerState extends State<ModelViewer> {
             'animation-crossfade-duration',
             'autoplay',
 
-            // Scene Graph Attributes
+            // Materials & Scene Attributes
             'variant-name',
             'orientation',
             'scale',
@@ -169,27 +167,26 @@ class ModelViewerState extends State<ModelViewer> {
       src: widget.src,
       alt: widget.alt,
       poster: widget.poster,
-      seamlessPoster: widget.seamlessPoster,
       loading: widget.loading,
       reveal: widget.reveal,
       withCredentials: widget.withCredentials,
       // AR Attributes
       ar: widget.ar,
       arModes: widget.arModes,
-      arScale: widget.arScale,
-      arPlacement: widget.arPlacement,
+      // arScale: widget.arScale,
+      // arPlacement: widget.arPlacement,
       iosSrc: widget.iosSrc,
       xrEnvironment: widget.xrEnvironment,
       // Staing & Cameras Attributes
       cameraControls: widget.cameraControls,
-      enablePan: widget.enablePan,
+      disablePan: widget.disablePan,
+      disableTap: widget.disableTap,
       touchAction: widget.touchAction,
       disableZoom: widget.disableZoom,
       orbitSensitivity: widget.orbitSensitivity,
       autoRotate: widget.autoRotate,
       autoRotateDelay: widget.autoRotateDelay,
       rotationPerSecond: widget.rotationPerSecond,
-      interactionPolicy: widget.interactionPolicy,
       interactionPrompt: widget.interactionPrompt,
       interactionPromptStyle: widget.interactionPromptStyle,
       interactionPromptThreshold: widget.interactionPromptThreshold,
@@ -200,7 +197,6 @@ class ModelViewerState extends State<ModelViewer> {
       minCameraOrbit: widget.minCameraOrbit,
       maxFieldOfView: widget.maxFieldOfView,
       minFieldOfView: widget.minFieldOfView,
-      bounds: widget.bounds,
       interpolationDecay: widget.interpolationDecay,
       // Lighting & Env Attributes
       skyboxImage: widget.skyboxImage,
@@ -212,15 +208,14 @@ class ModelViewerState extends State<ModelViewer> {
       animationName: widget.animationName,
       animationCrossfadeDuration: widget.animationCrossfadeDuration,
       autoPlay: widget.autoPlay,
-      // Scene Graph Attributes
+      // Materials & Scene Attributes
       variantName: widget.variantName,
       orientation: widget.orientation,
       scale: widget.scale,
 
       // CSS Styles
       backgroundColor: widget.backgroundColor,
-      // Loading CSS
-      posterColor: widget.posterColor,
+
       // Annotations CSS
       minHotspotOpacity: widget.minHotspotOpacity,
       maxHotspotOpacity: widget.maxHotspotOpacity,
