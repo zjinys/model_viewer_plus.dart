@@ -20,7 +20,6 @@ setInterval(() => toggleModel.setAttribute('src', `https://modelviewer.dev/share
             src: "https://modelviewer.dev/shared-assets/models/shishkebab.glb",
             alt: "A 3D model of a shishkebab",
             shadowIntensity: 1,
-            bounds: Bounds.tight,
             cameraControls: true,
             autoRotate: true,
             relatedJs: js,

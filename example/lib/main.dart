@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
           autoRotate: true,
           cameraControls: true,
           iosSrc: 'https://modelviewer.dev/shared-assets/models/Astronaut.usdz',
+          disableZoom: true,
         ),
       ),
     );
