@@ -306,7 +306,7 @@ class ModelViewerState extends State<ModelViewer> {
               ...pathSegments,
               request.uri.path.replaceFirst('/', '')
             ]);
-            debugPrint("Try: ${tryDestination}");
+            debugPrint("Try: $tryDestination");
             await response.redirect(Uri.parse(tryDestination));
           } else {
             debugPrint('404 with ${request.uri}');

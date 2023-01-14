@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2023-01-13
+
+### Removed
+
+- **BREAKING** [#49 Add button with hotspot attributes to allowed elements](https://github.com/omchiii/model_viewer_plus.dart/pull/49), because you can customize them now.
+
+### Added
+
+- Allowing customize NodeValidator on Web platform by using `overwriteNodeValidatorBuilder`.
+- New example, `example\lib\materials_and_scene\change_color.dart`
+
+### Fixed
+
+- lints
+- Upgrade Dart SDK in the example folder to 2.12.0 to "Running with sound null safety"
+
 ## [1.4.0] - 2022-12-06
 
 ### Changed
@@ -13,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Examples support Android API 33
 - Dependencies upgrade
 
-## 2022-10-08
+## [] - 2022-10-08
 
 ### Changed
 
