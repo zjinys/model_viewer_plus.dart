@@ -201,7 +201,7 @@ abstract class HTMLBuilder {
     }
     // orbit-sensitivity
     if (orbitSensitivity != null) {
-      modelViewerHtml.write(' orbit-sensitivity="${orbitSensitivity}"');
+      modelViewerHtml.write(' orbit-sensitivity="$orbitSensitivity"');
     }
     // auto-rotate
     if (autoRotate ?? false) {

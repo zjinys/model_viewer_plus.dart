@@ -17,7 +17,9 @@ web component in a [WebView](https://pub.dev/packages/webview_flutter).
 
 ## Compatibility
 
-Android, iOS, Web, with [a recent system browser version](https://modelviewer.dev/#section-browser-support).
+- Android
+- iOS (AR View may not avaliable on iOS 16+)
+- Web, with [a recent system browser version](https://modelviewer.dev/#section-browser-support).
 
 ## Notes
 
