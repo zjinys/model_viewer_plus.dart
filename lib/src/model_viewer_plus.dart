@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'model_viewer_plus_stub.dart'
     if (dart.library.io) 'model_viewer_plus_mobile.dart'
@@ -26,62 +27,64 @@ enum InteractionPromptStyle { wiggle, basic }
 
 /// Flutter widget for rendering interactive 3D models.
 class ModelViewer extends StatefulWidget {
-  ModelViewer(
-      {Key? key,
-      this.backgroundColor = Colors.transparent,
-      required this.src,
-      this.alt,
-      this.poster,
-      this.loading,
-      this.reveal,
-      this.withCredentials,
-      this.ar,
-      this.arModes,
-      this.arScale,
-      this.arPlacement,
-      this.iosSrc,
-      this.xrEnvironment,
-      this.cameraControls = true,
-      this.disablePan,
-      this.disableTap,
-      this.touchAction,
-      this.disableZoom,
-      this.orbitSensitivity,
-      this.autoRotate,
-      this.autoRotateDelay,
-      this.rotationPerSecond,
-      this.interactionPrompt,
-      this.interactionPromptStyle,
-      this.interactionPromptThreshold,
-      this.cameraOrbit,
-      this.cameraTarget,
-      this.fieldOfView,
-      this.maxCameraOrbit,
-      this.minCameraOrbit,
-      this.maxFieldOfView,
-      this.minFieldOfView,
-      this.interpolationDecay,
-      this.skyboxImage,
-      this.environmentImage,
-      this.exposure,
-      this.shadowIntensity,
-      this.shadowSoftness,
-      this.animationName,
-      this.animationCrossfadeDuration,
-      this.autoPlay,
-      this.variantName,
-      this.orientation,
-      this.scale,
-      // this.arStatus,
-      // this.arTracking,
-      this.minHotspotOpacity,
-      this.maxHotspotOpacity,
-      this.innerModelViewerHtml,
-      this.relatedCss,
-      this.relatedJs,
-      this.id,
-      this.overwriteNodeValidatorBuilder})
-      : super(key: key);
+  ModelViewer({
+    Key? key,
+    this.backgroundColor = Colors.transparent,
+    required this.src,
+    this.alt,
+    this.poster,
+    this.loading,
+    this.reveal,
+    this.withCredentials,
+    this.ar,
+    this.arModes,
+    this.arScale,
+    this.arPlacement,
+    this.iosSrc,
+    this.xrEnvironment,
+    this.cameraControls = true,
+    this.disablePan,
+    this.disableTap,
+    this.touchAction,
+    this.disableZoom,
+    this.orbitSensitivity,
+    this.autoRotate,
+    this.autoRotateDelay,
+    this.rotationPerSecond,
+    this.interactionPrompt,
+    this.interactionPromptStyle,
+    this.interactionPromptThreshold,
+    this.cameraOrbit,
+    this.cameraTarget,
+    this.fieldOfView,
+    this.maxCameraOrbit,
+    this.minCameraOrbit,
+    this.maxFieldOfView,
+    this.minFieldOfView,
+    this.interpolationDecay,
+    this.skyboxImage,
+    this.environmentImage,
+    this.exposure,
+    this.shadowIntensity,
+    this.shadowSoftness,
+    this.animationName,
+    this.animationCrossfadeDuration,
+    this.autoPlay,
+    this.variantName,
+    this.orientation,
+    this.scale,
+    // this.arStatus,
+    // this.arTracking,
+    this.minHotspotOpacity,
+    this.maxHotspotOpacity,
+    this.innerModelViewerHtml,
+    this.relatedCss,
+    this.relatedJs,
+    this.id,
+    this.overwriteNodeValidatorBuilder,
+    this.javascriptChannels,
+    this.onWebViewCreated,
+  }) : super(key: key);
 
   // Loading Attributes
 
@@ -604,6 +607,14 @@ class ModelViewer extends StatefulWidget {
   /// See also: [NodeValidatorBuilder](https://api.flutter.dev/flutter/dart-html/NodeValidatorBuilder-class.html)
   ///
   final NodeValidatorBuilder? overwriteNodeValidatorBuilder;
+
+  /// Passthrough to `javascriptChannels` in the underlying `WebView`.
+  final Set<JavascriptChannel>? javascriptChannels;
+
+  /// Passthrough to `onWebViewCreated` in the underlying `WebView`.
+  ///
+  /// Called *after* the logic that initializes the model-viewer.
+  final Function(WebViewController controller)? onWebViewCreated;
 
   @override
   State<ModelViewer> createState() => ModelViewerState();

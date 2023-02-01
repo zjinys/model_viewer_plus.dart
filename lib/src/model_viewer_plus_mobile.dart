@@ -71,7 +71,9 @@ class ModelViewerState extends State<ModelViewer> {
           _controller.complete(webViewController);
           debugPrint('>>>> ModelViewer initializing... <$_proxyURL>'); // DEBUG
           await webViewController.loadUrl(_proxyURL);
+          widget.onWebViewCreated?.call(webViewController);
         },
+        javascriptChannels: widget.javascriptChannels,
         navigationDelegate: (final NavigationRequest navigation) async {
           debugPrint(
               '>>>> ModelViewer wants to load: <${navigation.url}>'); // DEBUG
