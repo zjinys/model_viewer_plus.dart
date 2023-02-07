@@ -140,6 +140,7 @@ class ModelViewerState extends State<ModelViewer> {
       relatedCss: widget.relatedCss,
       relatedJs: widget.relatedJs,
       id: widget.id,
+      debugLogging: widget.debugLogging,
     );
   }
 }
