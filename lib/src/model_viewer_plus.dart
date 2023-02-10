@@ -81,6 +81,7 @@ class ModelViewer extends StatefulWidget {
     this.relatedCss,
     this.relatedJs,
     this.id,
+    this.debugLogging = true,
     this.overwriteNodeValidatorBuilder,
     this.javascriptChannels,
     this.onWebViewCreated,
@@ -569,6 +570,11 @@ class ModelViewer extends StatefulWidget {
 
   /// The id of the [ModelViewer] in HTML.
   final String? id;
+
+  /// If false, [HTMLBuilder] will not print debug logs.
+  ///
+  /// Defaults to true;
+  final bool? debugLogging;
 
   /// Customize allowed tags & attrubutes for Web platform.
   ///

@@ -73,6 +73,7 @@ abstract class HTMLBuilder {
     final String? relatedCss,
     final String? relatedJs,
     final String? id,
+    final bool? debugLogging,
   }) {
     if (relatedCss != null) {
       htmlTemplate = htmlTemplate.replaceFirst('/* other-css */', relatedCss);
@@ -399,10 +400,15 @@ abstract class HTMLBuilder {
       modelViewerHtml.writeln('</script>');
     }
 
-    debugPrint("HTML generated for model_viewer_plus:");
+    if (debugLogging == true) {
+      debugPrint("HTML generated for model_viewer_plus:");
+    }
     var html =
         htmlTemplate.replaceFirst('<!-- body -->', modelViewerHtml.toString());
-    debugPrint(html); // DEBUG
+
+    if (debugLogging == true) {
+      debugPrint(html); // DEBUG
+    }
 
     return html;
   }
