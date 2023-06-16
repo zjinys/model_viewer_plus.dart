@@ -22,7 +22,7 @@ dev_dependencies:
     sdk: flutter
   lints: ^2.0.1
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0 <4.0.0"
 flutter:
   assets:
     - assets/
